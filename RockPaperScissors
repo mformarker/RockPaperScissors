@@ -21,7 +21,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println((char)27 + "[35mPaper, Rock or Scissors?");
+            System.out.println((char)27 + "[34mPaper, Rock or Scissors?");
             System.out.print((char)27 + "[38m");
 
             String reply = scanner.nextLine();
