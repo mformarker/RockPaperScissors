@@ -1,0 +1,130 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        int playedGames = 0;
+
+        System.out.println();
+        System.out.println("Let's play " + (char)27 + "[34mPaper/Rock/Scissors!");
+        System.out.println((char)27 + "[38mType " + (char)27 + "[32m'quit'" + (char)27 + "[38m if you would like to stop");
+        System.out.print((char)27 + "[38m");
+
+        int replyInNumber;
+        int youWon = 0;
+        int wonByAI = 0;
+        Random random = new Random();
+        System.out.println("What do you choose?");
+
+        while (true) {
+
+            System.out.println((char)27 + "[35mPaper, Rock or Scissors?");
+            System.out.print((char)27 + "[38m");
+
+            String reply = scanner.nextLine();
+
+            if (reply.equalsIgnoreCase("quit")) {
+                break;
+            }
+
+            int choiceByAI = random.nextInt(3);
+
+            if (reply.equalsIgnoreCase("paper")) {
+                replyInNumber = 0;
+            } else if (reply.equalsIgnoreCase("rock")) {
+                replyInNumber = 1;
+            } else if (reply.equalsIgnoreCase("scissors")) {
+                replyInNumber = 2;
+            } else {
+                replyInNumber = -1;
+            }
+
+            if (replyInNumber == -1) {
+                System.out.println("Hey! You are supposed to choose paper, rock or scissors!");
+
+            } else if (choiceByAI == replyInNumber) {
+                System.out.println("Oh, we chose the same one!");
+                System.out.println((char)27 + "[33mDraw!");
+                System.out.print((char)27 + "[38m");
+
+            } else if (choiceByAI == 0) {
+
+                System.out.println("I chose Paper!");
+                    if (replyInNumber == 2) {
+                        theResult(1);
+                        youWon++;
+                    } else {
+                        theResult(-1);
+                        wonByAI++;
+                    }
+
+                } else if (choiceByAI == 1) {
+
+                System.out.println("I chose Rock!");
+                    if (replyInNumber == 0) {
+
+                        theResult(1);
+                        youWon++;
+                    } else {
+                        theResult(-1);
+                        wonByAI++;
+                    }
+
+                } else {
+
+                System.out.println("I chose Scissors!");
+                    if (replyInNumber == 1) {
+
+                        theResult(1);
+                        youWon++;
+                    } else {
+                        theResult(-1);
+                        wonByAI++;
+                    }
+
+                }
+
+            System.out.println("Let's try again!");
+            System.out.println();
+
+                playedGames++;
+
+        }
+
+        if (playedGames == 0) {
+            System.out.println("Ok, we will play next time!");
+
+        } else {
+
+            System.out.println((char)27 + "[33m");
+            System.out.println("********************");
+            System.out.print((char)27 + "[32m");
+            System.out.printf("We've played %s times! %n", playedGames);
+            System.out.printf("You've won %s games! %n", youWon);
+            System.out.printf("I've won %s games! %n", wonByAI);
+            System.out.print((char)27 + "[33m");
+            System.out.println("********************");
+            System.out.println((char)27 + "[38m");
+            System.out.println("It was fun! See you again later!");
+
+        }
+
+        scanner.close();
+
+    }
+
+    public static void theResult(int i) {
+
+        if (i==1) {
+            System.out.println((char)27 + "[32mYou won!");
+        } else {
+            System.out.println((char)27 + "[31mI won!");
+        }
+        System.out.print((char)27 + "[38m");
+
+    }
+
+}
